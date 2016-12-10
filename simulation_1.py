@@ -75,6 +75,13 @@ if __name__ == '__main__':
     for t in thread_L:
         t.join()
 
+    #p = network_1.NetworkPacket(2,'data',1,'hello')
+    #print(p)
+    #m = network_1.MPLS_frame(2, p)
+    #mS = m.to_byte_M()
+    #mf = network_1.MPLS_frame.from_byte_M(mS)
+    #print(mf)
+
     print("All simulation threads joined")
 
 

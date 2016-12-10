@@ -134,6 +134,26 @@ class NetworkPacket:
         return self(dst_addr, prot_S, priority, data_S)
 
 
+class MPLS_frame:
+
+    def __init__(self, label, packet):
+        self.label = label
+        self.packet = packet
+
+    def __str__(self):
+        return self.to_byte_M()
+
+    def to_byte_M(self):
+        byte_M = str(self.label)
+        byte_M += self.packet.to_byte_S()
+        return byte_M
+
+    @classmethod
+    def from_byte_M(self, byte_M):
+        label = int(byte_M[0])
+        packet = NetworkPacket.from_byte_S(byte_M[1:])
+        return self(label, packet)
+
 
 
 ## Implements a network host for receiving and transmitting data
